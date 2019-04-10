@@ -1,0 +1,54 @@
+@mixin link-reset() {
+  color: inherit;
+  text-decoration: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+
+  @include break(md) {
+    font-size: calc(1vw + .45em);
+  }
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: $green-primary;
+  color: $base-font-color;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+a {
+  @include link-reset();
+  
+  &:visited,
+  &:hover,
+  &:active {
+    @include link-reset();
+  }
+}
