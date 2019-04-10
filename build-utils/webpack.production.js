@@ -4,13 +4,7 @@ const src_dir = path.resolve(__dirname, './client/src');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 
-module.exports = {
-  entry: { main: src_dir + '/index.js', styles: src_dir + '/sass.js' },
-  output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, './dist'),
-  },
-  mode: 'production',
+module.exports = () => ({
   devtool: 'source-map',
   module: {
     rules: [
@@ -59,4 +53,4 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
   },
-};
+});
