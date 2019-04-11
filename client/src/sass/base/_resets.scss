@@ -10,9 +10,10 @@
 }
 
 :root {
+  font-size: 1.1rem;
 
-  @include break(md) {
-    font-size: calc(1vw + .45em);
+  @include break(sm) {
+    font-size: calc(1vw + 1em);
   }
 }
 
@@ -35,6 +36,11 @@ h4,
 h5,
 h6 {
   margin: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }
 
 ul {
