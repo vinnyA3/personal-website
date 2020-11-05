@@ -63,10 +63,10 @@ const Window = () => {
           <span>: {"{"}</span>
         </div>
         <div>
-          <span className="code__prop code__prop--indent2">email</span>:
+          <span className="code__prop code__prop--indent2">email</span>:&nbsp;
           <span className="code__string">
             <a className="code__link" href="mailto:vincent.aceto@gmail.com">
-              &nbsp;'vincent.aceto@gmail.com'
+              'vincent.aceto@gmail.com'
             </a>
           </span>
           ,
