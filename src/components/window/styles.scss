@@ -153,10 +153,11 @@ a {
   color: #c9c9c9;
   border-radius: 7px;
   background-color: #332e2e;
+  overflow: hidden;
   box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.4%);
 
   @include break(md) {
-    padding: 1.8rem 2.2rem 1.8rem 4.4rem;
+    padding: 2.6rem 2.2rem 1.6rem 4.4rem;
   }
 
   &__lines {
@@ -245,4 +246,45 @@ a {
 
 .indent-level-2 {
   padding-left: .8rem;
+}
+
+#code-window {
+  position: absolute;
+}
+
+.top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #cfcece;
+  padding: .5em 1.12em;
+  cursor: grab;
+
+  > * {
+    border-radius: 100%;
+    height: .6em;
+    width: .6em;
+    background-color: #332e2e;
+    cursor: pointer;
+  }
+
+  > *:not(:last-child) {
+    margin-right: .6em;
+  }
+
+  .close {
+    background-color: #cd3635;
+  }
+
+  .minimize {
+    background-color: #d3a43f;
+  }
+
+  .maximize {
+    background-color: #33a645;
+  }
 }

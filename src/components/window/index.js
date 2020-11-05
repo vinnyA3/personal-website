@@ -28,9 +28,15 @@ const CodeLink = ({ text, url }) => (
 
 const contactData = [["email", "vincent.aceto@gmail.com"]]
 
-const Window = ({ data }) => {
+const Window = ({data }) => {
   return (
     <div className="code">
+      <div className="top-bar">
+        <div className="close"></div>
+        <div className="minimize"></div>
+        <div className="maximize"></div>
+      </div>
+
       <code>
         <div className="code__opening">
           <span className="code__line-number">1</span>
