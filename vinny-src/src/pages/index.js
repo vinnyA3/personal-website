@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import SEO from "../components/seo"
 import Window from '../components/window'
 import bgColorGenerator from "../background-color-generator"
