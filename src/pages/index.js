@@ -1,14 +1,9 @@
 import React, { useEffect } from "react"
-import { of, fromEvent, animationFrameScheduler } from "rxjs"
-import {
-  map,
-  switchMap,
-  takeUntil,
-  subscribeOn,
-} from "rxjs/operators"
+import { fromEvent, animationFrameScheduler } from "rxjs"
+import { map, filter, switchMap, takeUntil, subscribeOn } from "rxjs/operators"
 import SEO from "../components/seo"
 import Window from "../components/window"
-import SpecialMessage from '../components/binary'
+import SpecialMessage from "../components/binary"
 import bgColorGenerator from "../background-color-generator"
 
 const DATA = [
@@ -20,13 +15,17 @@ const DATA = [
 
 const IndexPage = () => {
   useEffect(() => {
-    // const generator = bgColorGenerator(document.body)([193, 88, 88])
+    const generator = bgColorGenerator(document.body)([193, 88, 88])
+
     const win = document.getElementById("code-window")
     const mousedown$ = fromEvent(win, "mousedown")
     const mousemove$ = fromEvent(document, "mousemove")
     const mouseup$ = fromEvent(win, "mouseup")
 
+    // TODO: generalize click offset relative to the target element
+    // (not someting so specific as a classname)
     const drag$ = mousedown$.pipe(
+      filter(ev => ev.target.className === "top-bar"),
       switchMap(start => {
         return mousemove$.pipe(
           map(move => {
@@ -49,8 +48,8 @@ const IndexPage = () => {
     })
 
     return () => {
-      // generator.stop()
-      position$.unsubscribe()
+      if (generator) generator.stop()
+      if (position$) position$.unsubscribe()
     }
   }, [])
 

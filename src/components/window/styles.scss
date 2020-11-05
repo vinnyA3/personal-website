@@ -262,13 +262,14 @@ a {
   align-items: center;
   background-color: #cfcece;
   padding: .5em 1.12em;
+  cursor: grab;
 
   > * {
     border-radius: 100%;
     height: .6em;
     width: .6em;
     background-color: #332e2e;
-    box-shadow: inset 0 0 0.03rem rgba(0, 0, 0, 0.36%);
+    cursor: pointer;
   }
 
   > *:not(:last-child) {
