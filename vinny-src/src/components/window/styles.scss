@@ -1,3 +1,21 @@
+$base-font-color: #fff;
+$green-primary: #00A451;
+
+$purple: #c678dd;
+$error: #f44747;
+$coral: #e06c75;
+$whiskey: #d19a66;
+$chalky: #e5c07b;
+$lightDark: #7f848e;
+$dark: #5c6370;
+$malibu: #61afef;
+$green: #98c379;
+$fountainBlue: #56b6c2;
+$invalid: #ffffff;
+
+$base-font-family: 'Inconsolata', monospace; 
+$base-heading-font-family: $base-font-family;
+
 $breakpoints: (
   sm: 36.875em,
   md: 50.5em
@@ -15,17 +33,104 @@ $breakpoints: (
   }
 }
 
-$purple: #c678dd;
-$error: #f44747;
-$coral: #e06c75;
-$whiskey: #d19a66;
-$chalky: #e5c07b;
-$lightDark: #7f848e;
-$dark: #5c6370;
-$malibu: #61afef;
-$green: #98c379;
-$fountainBlue: #56b6c2;
-$invalid: #ffffff;
+p,
+span,
+li,
+div,
+figcaption,
+a,
+i {
+  font-family: $base-font-family;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $base-heading-font-family;
+}
+
+/* Perfect Third */
+h1 {font-size: 4.209em; line-height: .95em}
+
+h2 {font-size: 3.157em;}
+
+h3 {font-size: 2.369em;}
+
+h4 {font-size: 1.777em;}
+
+h5 {font-size: 1.333em;}
+
+p {
+  font-size: 1.333em;
+
+  @include break(md) {
+    font-size: 1rem;
+  }
+}
+
+@mixin link-reset() {
+  color: inherit;
+  text-decoration: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 1.1rem;
+
+  @include break(sm) {
+    font-size: calc(1vw + 1em);
+  }
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: $green-primary;
+  color: $base-font-color;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+a {
+  @include link-reset();
+  
+  &:visited,
+  &:hover,
+  &:active {
+    @include link-reset();
+  }
+}
 
 .code {
   position: relative;
