@@ -1,113 +1,72 @@
 import React from "react"
-
+import CodeProp from './components/CodeProp'
+import CodeList from './components/CodeList'
 import "./styles.scss"
 
-const Window = () => {
+const generateCodePropList = (
+  items,
+  indentLevel = null,
+  startingIndex = null
+) => {
+  return items.map((item, idx) => (
+    <CodeProp
+      key={idx}
+      item={item}
+      idx={startingIndex ? startingIndex + 1 : idx + 2}
+      indentLevel={indentLevel}
+    />
+  ))
+}
+
+const CodeLink = ({ text, url }) => (
+  <div className="code__link">
+    <a href={url ? url : "#"} target="__blank">
+      {text}
+    </a>
+  </div>
+)
+
+const contactData = [["email", "vincent.aceto@gmail.com"]]
+
+const Window = ({ data }) => {
   return (
     <div className="code">
-      <div className="code__lines">
-        <div className="code__line-number">
-          <span>1</span>
-        </div>
-        <div className="code__line-number">
-          <span>2</span>
-        </div>
-        <div className="code__line-number">
-          <span>3</span>
-        </div>
-        <div className="code__line-number">
-          <span>4</span>
-        </div>
-        <div className="code__line-number">
-          <span>5</span>
-        </div>
-        <div className="code__line-number">
-          <span>6</span>
-        </div>
-        <div className="code__line-number">
-          <span>7</span>
-        </div>
-        <div className="code__line-number">
-          <span>8</span>
-        </div>
-        <div className="code__line-number">
-          <span>9</span>
-        </div>
-        <div className="code__line-number">
-          <span>10</span>
-        </div>
-      </div>
       <code>
-        <div>
+        <div className="code__opening">
+          <span className="code__line-number">1</span>
           <span className="code__keyword">const</span>
           <span className="code__variable"> aboutMe</span> <span> = {"{"}</span>
         </div>
-        <div>
-          <span className="code__prop">name</span>:
-          <span className="code__string"> 'Vincent Aceto'</span>,
+        <React.Fragment>{generateCodePropList(data)}</React.Fragment>
+
+        <div className="code__item">
+          <span className="code__line-number">{6}</span>
+          <span className="code__prop">contact</span>:&nbsp;
+          <span>{"{"}</span>
+          <React.Fragment>
+            {generateCodePropList(contactData, 2, 6)}
+          </React.Fragment>
         </div>
-        <div>
-          <span className="code__prop">occupation</span>:
-          <span className="code__string"> 'Software Engineer'</span>,
+
+        <div className="code__item indent-level-2">
+          <span className="code__line-number">{8}</span>
+          <span className="code__prop">socials</span>:&nbsp;
+          <CodeList inline>
+            <CodeLink text="'github'" url="https://github.com/vinnyA3" />
+            <CodeLink text="'codepen'" url="https://codepen.io/vinnyA3" />
+            <CodeLink text="'linkedin'" url="https://linkedin.com/in/vinaceto" />
+          </CodeList>
         </div>
-        <div>
-          <span className="code__prop">employer</span>:
-          <span className="code__string"> 'Major League Soccer'</span>,
+
+        <div className="code__opening">
+          <span className="code__line-number">9</span>
+          <span className="indent-level-2">{"}"}</span>
         </div>
-        <div>
-          <span className="code__prop">location</span>:
-          <span className="code__string"> 'New York, NY'</span>,
+
+        <div className="code__opening">
+          <span className="code__line-number">10</span>
+          <span>{"}"}</span>
         </div>
-        <div>
-          <span className="code__prop">contact</span>
-          <span>: {"{"}</span>
-        </div>
-        <div>
-          <span className="code__prop code__prop--indent2">email</span>:&nbsp;
-          <span className="code__string">
-            <a className="code__link" href="mailto:vincent.aceto@gmail.com">
-              'vincent.aceto@gmail.com'
-            </a>
-          </span>
-          ,
-        </div>
-        <div>
-          <span className="code__prop code__prop--indent2">socials</span>: [&nbsp;
-          <span className="code__string">
-            <a
-              className="code__link"
-              href="https://github.com/vinnyA3"
-              target="_blank"
-            >
-              'github'
-            </a>
-          </span>
-          ,
-          <span className="code__string">
-            <a
-              className="code__link"
-              href="https://codepen.io/vinnyA3"
-              target="_blank"
-            >
-              'codepen'
-            </a>
-          </span>
-          ,
-          <span className="code__string">
-            <a
-              className="code__link"
-              href="https://linkedin.com/in/vinaceto"
-              target="_blank"
-            >
-              'linkedin'
-            </a>
-          </span>
-          &nbsp;]
-        </div>
-        <div>
-          <span className="code__indent">{"}"}</span>
-        </div>
-        <span>{"}"}</span>
       </code>
     </div>
   )
