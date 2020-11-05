@@ -1,6 +1,14 @@
 import React, { useEffect } from "react"
+import { of, fromEvent, animationFrameScheduler } from "rxjs"
+import {
+  map,
+  switchMap,
+  takeUntil,
+  subscribeOn,
+} from "rxjs/operators"
 import SEO from "../components/seo"
 import Window from "../components/window"
+import SpecialMessage from '../components/binary'
 import bgColorGenerator from "../background-color-generator"
 
 const DATA = [
@@ -12,10 +20,37 @@ const DATA = [
 
 const IndexPage = () => {
   useEffect(() => {
-    const generator = bgColorGenerator(document.body)([193, 88, 88])
+    // const generator = bgColorGenerator(document.body)([193, 88, 88])
+    const win = document.getElementById("code-window")
+    const mousedown$ = fromEvent(win, "mousedown")
+    const mousemove$ = fromEvent(document, "mousemove")
+    const mouseup$ = fromEvent(win, "mouseup")
+
+    const drag$ = mousedown$.pipe(
+      switchMap(start => {
+        return mousemove$.pipe(
+          map(move => {
+            move.preventDefault()
+            return {
+              left: move.clientX - start.offsetX,
+              top: move.clientY - start.offsetY,
+            }
+          }),
+          takeUntil(mouseup$)
+        )
+      })
+    )
+
+    const position$ = drag$.pipe(subscribeOn(animationFrameScheduler))
+
+    position$.subscribe(pos => {
+      win.style.top = `${pos.top}px`
+      win.style.left = `${pos.left}px`
+    })
 
     return () => {
-      generator.stop()
+      // generator.stop()
+      position$.unsubscribe()
     }
   }, [])
 
@@ -30,7 +65,10 @@ const IndexPage = () => {
       }}
     >
       <SEO title="Home" />
-      <Window data={DATA} />
+      <SpecialMessage />
+      <div id="code-window">
+        <Window data={DATA} />
+      </div>
     </div>
   )
 }
