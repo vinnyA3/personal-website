@@ -1,7 +1,14 @@
 import React, { useEffect } from "react"
 import SEO from "../components/seo"
-import Window from '../components/window'
+import Window from "../components/window"
 import bgColorGenerator from "../background-color-generator"
+
+const DATA = [
+  ["name", "Vincent Aceto"],
+  ["occupation", "Software Engineer"],
+  ["employer", "Major League Soccer"],
+  ["location", "New York, NY"],
+]
 
 const IndexPage = () => {
   useEffect(() => {
@@ -23,7 +30,7 @@ const IndexPage = () => {
       }}
     >
       <SEO title="Home" />
-      <Window />
+      <Window data={DATA} />
     </div>
   )
 }
