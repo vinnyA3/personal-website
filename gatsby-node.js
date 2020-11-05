@@ -4,4 +4,11 @@
  * See: https://www.gatsbyjs.com/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
+var fs = require('fs-extra')
+var path = require('path')
+
+exports.postBuild = (pages, callback) => {
+  console.log('Copying CNAME file to /public ...')
+  fs.copyFileSync(path.join(__dirname, 'CNAME'), path.join(__dirname, '/public/CNAME'))
+  callback()
+}
