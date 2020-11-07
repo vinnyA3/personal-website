@@ -12,9 +12,7 @@ const IndexPage = () => {
   }, [])
 
   return (
-    <React.Fragment>
-      <Home />
-    </React.Fragment>
+    <Home />
   )
 }
 

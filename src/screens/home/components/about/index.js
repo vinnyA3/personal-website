@@ -5,7 +5,7 @@ import Window from "@components/window"
 import SpecialMessage from "@components/binary"
 // TODO: resolve @ the src root OR .. npm package?
 import bgColorGenerator from "../../../../background-color-generator"
-import "./styles.scss"
+import styles from './styles.module.scss'
 
 const DATA = [
   ["name", "Vincent Aceto"],
@@ -23,6 +23,8 @@ const About = () => {
     const mousedown$ = fromEvent(win, "mousedown")
     const mousemove$ = fromEvent(document, "mousemove")
     const mouseup$ = fromEvent(win, "mouseup")
+
+    // TODO: confine window movement to about-me section
 
     // TODO: generalize click offset relative to the target element
     // (not someting so specific as a classname)
@@ -58,14 +60,7 @@ const About = () => {
   return (
     <div
       id="about-me"
-      style={{
-        position: 'relative',
-        height: "100%",
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+      className={styles.container}
     >
       <SpecialMessage />
       <div id="code-window">

@@ -1,9 +1,9 @@
 import React from "react"
-import "./styles.scss"
+import styles from './styles.module.scss'
 
 const SpecialMessage = () => {
   return (
-    <div className="container">
+    <div className={styles.container}>
       <div>
         <span>01001000</span>
         <span>01100101</span>

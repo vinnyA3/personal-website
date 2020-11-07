@@ -1,11 +1,9 @@
 import React from "react"
-import './styles.scss'
+import styles from "./styles.module.scss"
 
 const Intro = () => {
   return (
-    <div
-      className='container'
-    >
+    <div className={styles.container}>
       <h1>Vincent Aceto</h1>
     </div>
   )
