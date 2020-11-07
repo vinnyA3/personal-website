@@ -1,153 +1,5 @@
-$base-font-color: #fff;
-$green-primary: #00a451;
-
-$purple: #c678dd;
-$error: #f44747;
-$coral: #e06c75;
-$whiskey: #d19a66;
-$chalky: #e5c07b;
-$lightDark: #7f848e;
-$dark: #5c6370;
-$malibu: #61afef;
-$green: #98c379;
-$fountainBlue: #56b6c2;
-$invalid: #ffffff;
-
-$base-font-family: "Inconsolata", monospace;
-$base-heading-font-family: $base-font-family;
-
-$breakpoints: (
-  sm: 36.875em,
-  md: 50.5em,
-);
-
-@mixin flex-center() {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin break($bp, $rule: min-width) {
-  @media screen and (#{$rule}: map-get($breakpoints, $bp)) {
-    @content;
-  }
-}
-
-p,
-span,
-li,
-div,
-figcaption,
-a,
-i {
-  font-family: $base-font-family;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: $base-heading-font-family;
-}
-
-/* Perfect Third */
-h1 {
-  font-size: 4.209em;
-  line-height: 0.95em;
-}
-
-h2 {
-  font-size: 3.157em;
-}
-
-h3 {
-  font-size: 2.369em;
-}
-
-h4 {
-  font-size: 1.777em;
-}
-
-h5 {
-  font-size: 1.333em;
-}
-
-p {
-  font-size: 1.333em;
-
-  @include break(md) {
-    font-size: 1rem;
-  }
-}
-
-@mixin link-reset() {
-  color: inherit;
-  text-decoration: none;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-:root {
-  font-size: 1.1rem;
-
-  @include break(sm) {
-    font-size: calc(1vw + 1em);
-  }
-}
-
-html,
-body {
-  height: 100%;
-  width: 100%;
-  color: $base-font-color;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-#gatsby-focus-wrapper,
-body > * {
-  height: 100%;
-  width: 100%;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-p {
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-}
-
-a {
-  @include link-reset();
-
-  &:visited,
-  &:hover,
-  &:active {
-    @include link-reset();
-  }
-}
+@import "@styles/variables.scss";
+@import "@styles/mixins.scss";
 
 .code {
   position: relative;
@@ -160,6 +12,10 @@ a {
   background-color: #332e2e;
   overflow: hidden;
   box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.4%);
+
+  * { // ugly override, but whatever
+    font-family: $secondary-font-family;
+  }
 
   @include break(md) {
     padding: 2.6rem 2.2rem 1.6rem 4.4rem;
@@ -250,7 +106,7 @@ a {
 }
 
 .indent-level-2 {
-  padding-left: .8rem;
+  padding-left: 0.8rem;
 }
 
 #code-window {
@@ -266,19 +122,19 @@ a {
   justify-content: flex-start;
   align-items: center;
   background-color: #cfcece;
-  padding: .5em 1.12em;
+  padding: 0.5em 1.12em;
   cursor: grab;
 
   > * {
     border-radius: 100%;
-    height: .6em;
-    width: .6em;
+    height: 0.6em;
+    width: 0.6em;
     background-color: #332e2e;
     cursor: pointer;
   }
 
   > *:not(:last-child) {
-    margin-right: .6em;
+    margin-right: 0.6em;
   }
 
   .close {

@@ -1,0 +1,104 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+p,
+span,
+li,
+div,
+figcaption,
+a,
+i {
+  font-family: $base-font-family;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: $base-heading-font-family;
+}
+
+/* Perfect Third */
+h1 {
+  font-size: 4.209em;
+  line-height: 0.95em;
+}
+
+h2 {
+  font-size: 3.157em;
+}
+
+h3 {
+  font-size: 2.369em;
+}
+
+h4 {
+  font-size: 1.777em;
+}
+
+h5 {
+  font-size: 1.333em;
+}
+
+p {
+  font-size: 1.333em;
+
+  @include break(md) {
+    font-size: 1rem;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 1.1rem;
+
+  @include break(sm) {
+    font-size: calc(1vw + 1em);
+  }
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  color: $base-font-color;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#gatsby-focus-wrapper,
+body > * {
+  height: 100%;
+  width: 100%;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+a {
+  @include link-reset();
+
+  &:visited,
+  &:hover,
+  &:active {
+    @include link-reset();
+  }
+}
+
+code {
+  font-family: $secondary-font-family;
+}
