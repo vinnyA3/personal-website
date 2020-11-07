@@ -77,6 +77,13 @@ body {
   padding: 0;
 }
 
+/*
+  * Gatsby injects a wrapper to manage routes, so, we need to set a 100% height/width
+  * on the element in order to scale our containers to 100% height/width of the
+  * body
+  *
+  * https://github.com/gatsbyjs/gatsby/issues/7310
+*/
 #gatsby-focus-wrapper,
 body > * {
   height: 100%;

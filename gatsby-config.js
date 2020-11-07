@@ -22,6 +22,7 @@ module.exports = {
         root: './src', // <- will be used as a root dir
         aliases: {
           '@components': './components',
+          '@styles': './styles',
           helpers: './helpers',
           static: {
             root: './public', // <- will used as this alias' root dir
@@ -33,7 +34,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Inconsolata`], // TODO: select font sizes
+        fonts: [`Inconsolata`, `Merriweather`], // TODO: select font sizes
       },
     },
   ],
