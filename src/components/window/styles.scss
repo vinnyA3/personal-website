@@ -106,12 +106,17 @@ body {
   height: 100%;
   width: 100%;
   color: $base-font-color;
-  background-color: rgb(193, 88, 88); // TODO: set dynamically (if bgColorGenerator is running)
-  overflow: hidden; // TODO: set height/width on gatsby container
 }
 
 body {
   margin: 0;
+  padding: 0;
+}
+
+#gatsby-focus-wrapper,
+body > * {
+  height: 100%;
+  width: 100%;
 }
 
 h1,
