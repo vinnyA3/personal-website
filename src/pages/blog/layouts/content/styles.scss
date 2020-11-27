@@ -1,0 +1,52 @@
+$wrapper-padding: 1.2em 1.8em;
+$main-content-padding: 3.4em 6.8em;
+
+.content-wrapper {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+    "hero hero hero"
+    "main main main"
+    "footer footer footer";
+
+  grid-template-rows: minmax(12em, 1fr) auto 4em;
+  grid-template-columns: 150px 1fr;
+}
+
+.content {
+  &-hero {
+    grid-area: hero;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rebeccapurple;
+  }
+
+  &-main {
+    grid-area: main;
+    padding: $main-content-padding;
+    background-color: #fff;
+    color: #000;
+
+    ::-moz-selection {
+      /* Code for Firefox */
+      color: #fff;
+      background: rebeccapurple;
+    }
+
+    ::selection {
+      color: #fff;
+      background: rebeccapurple;
+    }
+  }
+
+  &-footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: $wrapper-padding;
+    background-color: rebeccapurple;
+  }
+}
