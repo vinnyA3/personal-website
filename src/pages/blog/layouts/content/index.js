@@ -1,23 +1,59 @@
 import React from "react"
-import styles from "./styles.scss"
+import { Link } from "gatsby"
+import DarkModeSwitch from "@components/darkmode-switch"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader"
+
+import "./styles.scss"
 
 deckDeckGoHighlightElement()
 
 const ContentWrapper = props => {
-  const { children, heroTitle = "Hello World!!" } = props
-
+  const { postData } = props
   return (
-    <div className="content-wrapper">
-      <section className="content-hero">
-        <h1>{heroTitle}</h1>
-      </section>
+    <div className="blog-layout">
+      <nav className="blog-navigation">
+        <div className="content-wrapper">
+          <div className="sub-navigation">
+            <div className="sub-navgation__brand">
+              <span>Vincent Aceto</span>
+            </div>
 
-      <main className="content-main">{props.children}</main>
+            <ul className="sub-navigation__controls">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <DarkModeSwitch />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-      <footer className="content-footer">
-        <div className="content-footer__brand">
-          <h6>Vincent Aceto</h6>
+      <div className={`blog-content`}>
+        <section className="blog-content__hero">
+          <h1>{postData.frontmatter.title}</h1>
+        </section>
+
+        <main
+          className="blog-content__main"
+          dangerouslySetInnerHTML={{ __html: postData.html }}
+        />
+      </div>
+
+      <footer className="blog-footer">
+        <div className="content-wrapper u-flex-center">
+          <div>
+            <h2>Vincent Aceto</h2>
+            <ul className="blog-footer__nav">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/blog">Blog</Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </footer>
     </div>

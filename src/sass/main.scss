@@ -1,0 +1,182 @@
+@import './mixins.scss';
+@import './utilities.scss';
+
+$baseline: 1.5rem;
+
+$minScreen: 20rem;
+$maxScreen: 50rem;
+$minFont: .8rem;
+$maxFont: 2rem;
+
+$h1: 2rem;
+$h2: 1.5rem;
+$h3: 1.25rem;
+$h4: 1rem;
+$h5: .875rem;
+
+$base-font-color: #000;
+$base-font-family: 'Roboto', sans-serif, helvetica;
+$base-heading-font-family: 'Inter', serif;
+
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+	& {
+		@each $property in $properties {
+			#{$property}: $min-value;
+		}
+
+		@media screen and (min-width: $min-vw) {
+			@each $property in $properties {
+				#{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+			}
+		}
+
+		@media screen and (min-width: $max-vw) {
+			@each $property in $properties {
+				#{$property}: $max-value;
+			}
+		}
+	}
+}
+
+@function strip-unit($value) {
+	@return $value / ($value * 0 + 1);
+}
+
+:root {
+	// @include fluid-type(font-size, $minScreen, $maxScreen, $minFont, $maxFont);
+  font-size: 16px;
+  // css theme - light theme default
+  --bg-primary: #fff;
+  --bg-secondary: #fff;
+  --font-color-primary: #000;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+html {
+	font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+html {
+  // --scrollbarBG: #CFD8DC;
+  --thumbBG: #1cd8d2;
+  // --thumbBGGradient: linear-gradient(to right, #1cd8d2 0%, #93edc7 51%, #1cd8d2 100%);
+  --thumbBGGradient: linear-gradient(180deg,#1cd8d2,#93edc7);
+  // --thumbBGGradient: linear-gradient(180deg,#ff8a00,#e52e71);
+}
+
+body::-webkit-scrollbar {
+  width: 30px;
+  height: 30px;
+}
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--bg-primary);
+}
+body::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  background-image: var(--thumbBGGradient) ;
+  border-radius: 30px;
+  border: 3px solid var(--bg-primary);
+  box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+}
+
+body {
+  margin: 0;
+	line-height: $baseline;
+  color: $base-font-color;
+}
+
+body.dark {
+  --bg-primary: #051B35;
+  --bg-secondary: #051B35;
+  --font-color-primary: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $base-heading-font-family;
+	font-weight: 700;
+	margin-bottom: $baseline;
+}
+
+h1 {
+	font-size: $h1;
+	line-height: $h1;
+	margin-top: calc((#{$baseline} - #{$h1}) + #{$baseline});
+}
+
+h2 {
+	font-size: $h2;
+	line-height: $h2;
+	margin-top: calc((#{$baseline} - #{$h2}) + #{$baseline}*2);
+}
+
+h3 {
+	font-size: $h3;
+	line-height: $h3;
+	margin-top: calc((#{$baseline} - #{$h3}) + #{$baseline}*2);
+}
+
+h4 {
+	font-size: $h4;
+	line-height: $h4;
+	margin-top: calc((#{$baseline} - #{$h4}) + #{$baseline}*2);
+}
+
+h5 {
+	font-size: $h5;
+	line-height: $h5;
+	margin-top: calc((#{$baseline} - #{$h5}) + #{$baseline}*2);
+}
+
+p,
+span,
+li,
+div,
+figcaption,
+a,
+button,
+i {
+  font-family: $base-font-family;
+}
+
+p {	
+  line-height: $baseline + .6;
+  margin-bottom: $baseline;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,33 @@
+$switch-radius: 30px;
+
+.theme-switch {
+  position: relative;
+  width: 2.4em;
+  height: 1.2em;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: blue;
+    z-index: 5;
+    border-radius: $switch-radius;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: 90%;
+    width: 50%;
+    border-radius: 100%;
+    background-color: red;
+    z-index: 10;
+  }
+
+  &:checked::after {
+    left: 50%;
+  }
+}

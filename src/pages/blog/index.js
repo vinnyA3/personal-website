@@ -3,16 +3,14 @@ import { graphql } from "gatsby"
 import SEO from "@components/seo"
 import ContentWrapper from "./layouts/content"
 
-const BlogIndex = ({ data }) => {
+const BlogIndex = props => {
+  const { data } = props
   const firstPost = data.allMarkdownRemark.edges[0].node
+
   return (
     <React.Fragment>
       <SEO title="Blog" />
-      <ContentWrapper heroTitle="Blog!!">
-        <div>
-          <div dangerouslySetInnerHTML={{ __html: firstPost.html }} />
-        </div>
-      </ContentWrapper>
+      <ContentWrapper postData={firstPost} />
     </React.Fragment>
   )
 }

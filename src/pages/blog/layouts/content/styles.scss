@@ -1,52 +1,120 @@
+@import '@sass/mixins.scss';
+
 $wrapper-padding: 1.2em 1.8em;
 $main-content-padding: 3.4em 6.8em;
 
 .content-wrapper {
-  height: 100%;
-  width: 100%;
+  @include break(lg) {
+    width: 1120px;
+    margin: 0 auto;
+  }
+}
+
+.blog-layout {
   display: grid;
   grid-template-areas:
-    "hero hero hero"
+    "nav nav nav"
     "main main main"
     "footer footer footer";
 
-  grid-template-rows: minmax(12em, 1fr) auto 4em;
+  grid-template-rows: minmax(12em, 1fr) auto minmax(4em, 1fr);
   grid-template-columns: 150px 1fr;
+  background-color: var(--bg-primary);
+  color: var(--font-color-primary);
 }
 
-.content {
-  &-hero {
-    grid-area: hero;
+.blog-navigation {
+  grid-area: nav;
+  background-color: rebeccapurple;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blog-footer {
+  grid-area: footer;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #4a5568;
+  background-color: #051B35;
+
+  &__nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    background-color: rebeccapurple;
+  }
+}
+
+.blog-content {
+  grid-area: main;
+  height: 100%;
+  width: 100%;
+
+  @include break(lg) {
+    width: 820px;
+    margin: 0 auto;
+  }
+}
+
+.blog-content {
+  &__hero {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    position: relative;
+    
+    h1 {
+      flex: 1;
+      text-align: center;
+    }
   }
 
-  &-main {
-    grid-area: main;
-    padding: $main-content-padding;
-    background-color: #fff;
-    color: #000;
+  &__main {
+    padding: .8em;
 
     ::-moz-selection {
       /* Code for Firefox */
       color: #fff;
-      background: rebeccapurple;
     }
 
     ::selection {
       color: #fff;
       background: rebeccapurple;
     }
-  }
 
-  &-footer {
-    grid-area: footer;
+    iframe { // fluid iframe
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    @include break(sm) {
+      padding: 1.8em;
+    }
+
+    @include break(md) {
+      padding: $main-content-padding;
+    }
+  }
+}
+
+.sub-navigation {
+  flex: 1 0 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sub-navigation__controls {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+
+  li {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    padding: $wrapper-padding;
-    background-color: rebeccapurple;
   }
 }
