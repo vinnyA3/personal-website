@@ -15,7 +15,7 @@ const ContentWrapper = props => {
         <div className="content-wrapper">
           <div className="sub-navigation">
             <div className="sub-navgation__brand">
-              <span>Vincent Aceto</span>
+              <h3>Vincent Aceto</h3>
             </div>
 
             <ul className="sub-navigation__controls">
@@ -35,6 +35,7 @@ const ContentWrapper = props => {
           <h1>{postData.frontmatter.title}</h1>
         </section>
 
+          <div style={{ position: 'fixed', left: '3em', top: '50%' }} dangerouslySetInnerHTML={{ __html: postData.tableOfContents }} />
         <main
           className="blog-content__main"
           dangerouslySetInnerHTML={{ __html: postData.html }}

@@ -1,11 +1,48 @@
 .home-wrapper {
+  height: 100%;
+  width: 100%;
   // TODO: better organization
   background-color: var(--bg-primary);
   color: var(--font-color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  position: relative
 }
+
+.intro__brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro__name {
+  text-transform: uppercase;
+}
+
+.intro__avatar {
+  border-radius: 100%;
+  max-width: 66px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 1.1em;
+}
+
 .intro__profession {
   font-size: 8rem;
-  font-weight: 900;
+  font-weight: 800;
+  letter-spacing: -3px;
+}
+
+.intro__blurb {
+  font-size: 1.465rem;
+  font-weight: 300;
+  max-width: 980px;
+  line-height: 42px;
+  margin: 1.666rem auto;
 }
 
 .intro__btn {
@@ -16,6 +53,7 @@
     #1cd8d2 100%
   );
 }
+
 .intro__btn {
   margin: 10px;
   padding: 15px 45px;

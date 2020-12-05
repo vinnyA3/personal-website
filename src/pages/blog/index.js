@@ -26,6 +26,7 @@ export const query = graphql`
             title
             date(formatString: "DD MMMM, YYYY")
           }
+          tableOfContents(heading: "", maxDepth: 10, absolute: false)
           excerpt
           timeToRead
           html

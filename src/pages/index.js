@@ -1,33 +1,33 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "gatsby"
 import SEO from "@components/seo"
-
+import DarkModeSwitch from '@components/darkmode-switch'
+import VincentProfile from '@assets/images/vincent-profile.jpeg' 
 import "@sass/main.scss"
 import "./styles.scss"
 
 const IndexPage = () => {
+  useEffect(() => {
+    // TODO: move this shit out  
+    const gatsbyWrapper = document.getElementById('gatsby-focus-wrapper')
+    gatsbyWrapper.style.height = '100%';
+    gatsbyWrapper.style.width = '100%';
+  }, [])
+
   return (
-    <div
-      className="home-wrapper"
-      style={{
-        height: "99vh",
-        width: "99vw",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        overflow: "hidden",
-        margin: 0,
-        padding: 0,
-      }}
-    >
+    <div className="home-wrapper">
       <SEO title="Home" />
+      <DarkModeSwitch style={{ position: 'absolute', top: '5em', right: '5em' }}/>
       <section style={{ textAlign: "center" }}>
-        <span>Vincent Aceto</span>
+        <div className="intro__brand">
+          <img className="intro__avatar" src={VincentProfile} alt="Vincent Aceto. That's me!!" />
+          <h4 className="intro__name">Vincent Aceto</h4>
+        </div>
         <h1 className="intro__profession">Software Engineer</h1>
-        <p>
+        <h4 className="intro__blurb">
           Currently writing code at Major League Soccer, occasionally
           contributing to open-source and writing when I can.
-        </p>
+        </h4>
         <div className="u-flex-center">
           <Link to="/blog">
             <button className="intro__btn">Visit blog</button>

@@ -1,33 +1,61 @@
-$switch-radius: 30px;
-
-.theme-switch {
+.toggle {
+  --dur: 0.3s;
   position: relative;
-  width: 2.4em;
-  height: 1.2em;
+	border-radius: 0.75em;
+	cursor: pointer;
+  background: black;
+	width: 3em;
+	height: 1.5em;
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-tap-highlight-color: transparent;
+  overflow: hidden;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: blue;
-    z-index: 5;
-    border-radius: $switch-radius;
+  &:checked {
+    background: white;
   }
 
-  &::after {
-    content: '';
+  &::before, &::after {
+    content: "";
+    border-radius: 50%;
+    display: block;
     position: absolute;
-    height: 90%;
-    width: 50%;
-    border-radius: 100%;
-    background-color: red;
-    z-index: 10;
+  	background: hsl(0,0%,90%);
+    top: 0.25em;
+    left: 0.25em;
+    width: 1em;
+    height: 1em;
+    transition: transform var(--dur);
+    transition-timing-function: ease-out;
+  }
+
+  &::before, &:checked::after {
+    transition-delay: 0s;
+  }
+
+  &:checked::after  {
+    transition-timing-function: ease-out;
+  }
+
+  &:checked::before, &::after {
+    transition-delay: calc(var(--dur) * 0.75);
+    transition-timing-function: cubic-bezier(0.3,1.6,0.5,0.7);
+  }
+
+  &::before {
+    transform: translateX(-1.5em);
+    background: black;
+  }
+
+  &:checked::before {
+    transform: translateX(1.5em);
   }
 
   &:checked::after {
-    left: 50%;
+    transform: translateX(3em);
+  }
+
+  &:focus {
+    outline: transparent;
   }
 }

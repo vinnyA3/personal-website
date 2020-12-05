@@ -51,7 +51,7 @@ const ThemeProvider = ({ children }) => {
   return (
     <ThemeContext.Provider
       value={{
-        dark: themeState.dark,
+        isDark: themeState.isDark,
         toggle,
       }}
     >

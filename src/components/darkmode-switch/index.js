@@ -3,13 +3,15 @@ import { useTheme } from '@contexts/themeContext'
 import './styles.scss';
 
 const DarkModeSwitch = (props) => {
-  const {isDark, toggle} = useTheme()
+  const { isDark, toggle } = useTheme()
   return (
-    <input type="checkbox"
-      className="theme-switch"
-      checked={isDark}
-      onClick={toggle}
-    />
+    <div style={props.style || {}}>
+      <input type="checkbox"
+        className="toggle"
+        checked={isDark}
+        onChange={toggle}
+      />
+    </div>
   )
 }
 
