@@ -9,6 +9,7 @@
     "deploy": "gatsby build && gh-pages -d public -b master",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "dirty-remark": "node ./scripts/remark.js",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
@@ -37,6 +38,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
+    "remark-html": "^13.0.1",
     "rxjs": "^6.6.3"
   },
   "devDependencies": {

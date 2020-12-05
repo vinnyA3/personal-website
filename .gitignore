@@ -70,3 +70,6 @@ yarn-error.log
 
 # boilerplater gatsby files
 boilerplate-gatsbys.txt
+
+# TODO: remove this shit
+content/output.html
