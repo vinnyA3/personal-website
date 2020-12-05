@@ -1,73 +1,39 @@
 import React, { useEffect } from "react"
-import { fromEvent, animationFrameScheduler } from "rxjs"
-import { map, filter, switchMap, takeUntil, subscribeOn } from "rxjs/operators"
-import SEO from "../components/seo"
-import Window from "../components/window"
-import SpecialMessage from "../components/binary"
-import bgColorGenerator from "../background-color-generator"
-
-const DATA = [
-  ["name", "Vincent Aceto"],
-  ["occupation", "Software Engineer"],
-  ["employer", "Major League Soccer"],
-  ["location", "New York, NY"],
-]
+import { Link } from "gatsby"
+import SEO from "@components/seo"
+import DarkModeSwitch from '@components/darkmode-switch'
+import VincentProfile from '@assets/images/vincent-profile.jpeg' 
+import "@sass/main.scss"
+import "./styles.scss"
 
 const IndexPage = () => {
   useEffect(() => {
-    const generator = bgColorGenerator(document.body)([193, 88, 88])
-
-    const win = document.getElementById("code-window")
-    const mousedown$ = fromEvent(win, "mousedown")
-    const mousemove$ = fromEvent(document, "mousemove")
-    const mouseup$ = fromEvent(win, "mouseup")
-
-    // TODO: generalize click offset relative to the target element
-    // (not someting so specific as a classname)
-    const drag$ = mousedown$.pipe(
-      filter(ev => ev.target.className === "top-bar"),
-      switchMap(start => {
-        return mousemove$.pipe(
-          map(move => {
-            move.preventDefault()
-            return {
-              left: move.clientX - start.offsetX,
-              top: move.clientY - start.offsetY,
-            }
-          }),
-          takeUntil(mouseup$)
-        )
-      })
-    )
-
-    const position$ = drag$.pipe(subscribeOn(animationFrameScheduler))
-
-    position$.subscribe(pos => {
-      win.style.top = `${pos.top}px`
-      win.style.left = `${pos.left}px`
-    })
-
-    return () => {
-      if (generator) generator.stop()
-      if (position$) position$.unsubscribe()
-    }
+    // TODO: move this shit out  
+    const gatsbyWrapper = document.getElementById('gatsby-focus-wrapper')
+    gatsbyWrapper.style.height = '100%';
+    gatsbyWrapper.style.width = '100%';
   }, [])
 
   return (
-    <div
-      style={{
-        height: "100vh",
-        width: "100vw",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div className="home-wrapper">
       <SEO title="Home" />
-      <SpecialMessage />
-      <div id="code-window">
-        <Window data={DATA} />
-      </div>
+      <DarkModeSwitch style={{ position: 'absolute', top: '5em', right: '5em' }}/>
+      <section style={{ textAlign: "center" }}>
+        <div className="intro__brand">
+          <img className="intro__avatar" src={VincentProfile} alt="Vincent Aceto. That's me!!" />
+          <h4 className="intro__name">Vincent Aceto</h4>
+        </div>
+        <h1 className="intro__profession">Software Engineer</h1>
+        <h4 className="intro__blurb">
+          Currently writing code at Major League Soccer, occasionally
+          contributing to open-source and writing when I can.
+        </h4>
+        <div className="u-flex-center">
+          <Link to="/blog">
+            <button className="intro__btn">Visit blog</button>
+          </Link>
+        </div>
+      </section>
     </div>
   )
 }

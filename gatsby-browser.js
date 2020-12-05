@@ -1,7 +1,19 @@
 /**
- * Implement Gatsby's Browser APIs in this file.
+ * Gatsby's Browser APIs implementation.
  *
  * See: https://www.gatsbyjs.com/docs/browser-apis/
  */
 
-// You can delete this file if you're not using it
+const React = require('react')
+const { ThemeProvider } = require('./src/context/themeContext')
+
+require("prismjs/themes/prism-tomorrow.css")
+
+exports.wrapRootElement = ({ element }) => {
+  return (
+    <ThemeProvider>
+      {element}
+    </ThemeProvider>
+  )
+}
+
