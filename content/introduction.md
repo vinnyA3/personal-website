@@ -1,51 +1,53 @@
 ---
-title: "Integrating Codepush in React Native"
-date: "2017-08-10"
+title: "Getting Started with Dotfiles"
+date: "2020-03-12"
 ---
 
-Codepush React Native Intergrations.
+## What Are Dotfiles? 
 
-Codepush can now be used with AppCenter!
+Dotfiles are configuration files that are used to customize and personalize your system. For all you history buffs, the dotfiles name comes from the UNIX convention of prefixing config files with a dot.  You can checkout some of the dotfiles by opening up terminal, navigate to your home directory, and listing all contents:
 
-<div style="position: relative; padding-bottom: 37.25%; height: 0; margin: 0 auto; max-width: 900px">
-  <iframe width="560" height="349" src="https://www.youtube.com/embed/y4ZwKAwApnY" frameborder="0" allowfullscreen></iframe>
-</div>
-
-
-## This is a secondary heading
-
-<p>
-Hello there, this is a test.
-We would like to get some sort of content here to display for
-the world to consume.  Now, we just need some lorem text .. let's get that.
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc sed id semper risus. Feugiat nisl pretium fusce id velit ut tortor pretium. Mi eget mauris pharetra et ultrices neque ornare. Elementum tempus egestas sed sed risus pretium quam vulputate dignissim. Sem viverra aliquet eget sit amet tellus cras adipiscing. Porttitor leo a diam sollicitudin tempor id eu nisl. Vestibulum lectus mauris ultrices eros in. Facilisis sed odio morbi quis commodo odio aenean sed adipiscing. Lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt. Ut faucibus pulvinar elementum integer enim neque volutpat. Fermentum leo vel orci porta non pulvinar neque. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc sed.
-</p>
-<p>
-Libero id faucibus nisl tincidunt eget nullam non nisi est. Lobortis feugiat vivamus at augue eget arcu dictum. Sit amet nisl purus in mollis nunc sed. Eget aliquet nibh praesent tristique magna. Tristique sollicitudin nibh sit amet commodo. Est lorem ipsum dolor sit amet. Aliquet sagittis id consectetur purus ut faucibus pulvinar. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Nibh sit amet commodo nulla facilisi nullam vehicula. Non blandit massa enim nec dui nunc. Porttitor leo a diam sollicitudin. Facilisi cras fermentum odio eu feugiat. Ultricies leo integer malesuada nunc vel risus commodo viverra maecenas. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Sed adipiscing diam donec adipiscing tristique risus nec feugiat in. Ullamcorper sit amet risus nullam eget felis eget nunc.
-</p>
-<p>
-Eu volutpat odio facilisis mauris sit. Proin libero nunc consequat interdum varius sit amet mattis. Malesuada fames ac turpis egestas integer eget. Erat pellentesque adipiscing commodo elit at imperdiet dui. Ultrices in iaculis nunc sed augue lacus viverra. Felis donec et odio pellentesque diam volutpat. Scelerisque purus semper eget duis at tellus at. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Et leo duis ut diam quam nulla porttitor. In nisl nisi scelerisque eu. Nibh praesent tristique magna sit amet purus.
-</p>
-
-
-## This is a third Heading 
-
-<p>
-Hello there, this is a test.
-We would like to get some sort of content here to display for
-the world to consume.  Now, we just need some lorem text .. let's get that.
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc sed id semper risus. Feugiat nisl pretium fusce id velit ut tortor pretium. Mi eget mauris pharetra et ultrices neque ornare. Elementum tempus egestas sed sed risus pretium quam vulputate dignissim. Sem viverra aliquet eget sit amet tellus cras adipiscing. Porttitor leo a diam sollicitudin tempor id eu nisl. Vestibulum lectus mauris ultrices eros in. Facilisis sed odio morbi quis commodo odio aenean sed adipiscing. Lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt. Ut faucibus pulvinar elementum integer enim neque volutpat. Fermentum leo vel orci porta non pulvinar neque. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc sed.
-</p>
-<br/>
-
-```javascript
-(function() {
-  const introduction = "Hello";
-  const name = "Vincent";
-  console.log(`${introduction}, ${name}`)
-})()
 ```
+cd ~ && ls -la
+```
+<br />
+
+Some typical dots include: `.bash_profile`, `.bashrc`, and `.lesshst`.  `.bashrc`, in particular, is a script used to initialize and configure an interactive bash shell session. Many programs that you use, in your day-to-day development / nix life, can be configured with specific dotfiles.  Git, for example, utilizes a `.gitconfig` file that allows you set preferences such as your user email, handle, and default editor.
+
+## Saving and Sharing Dotfiles with Git
+<p>
+  Tweaking dotfiles can be very time consuming (please don't let this deter you ... honestly, there's a joy in customizing your environments to your liking).  It would be a real shame if your hard-drive were to crap out one day, and you lose all those precious config files!
+</p>
+
+Well, fear not. Git to the rescue!  Of course, you can always archive and save your
+files to a portable drive, but if you're familiar with git, saving + sharing
+your dotfiles quick and easy. 
+
+To do this, make sure you:
+
+  1. Have a github account
+  1. Set up SSH -- because we're SMRT
+  * Create a dotfiles repository 
+
+
+When you're ready: `git add && git commit && git push`
+
+You can now rest assured that your files are safe and sound!
+
+In the event that you get a new machine, whether that be for work or personal use, all
+you need to do is pull down your dotfiles repo and take the day off.
+
+## Conclusion
+
+Dotfiles are configuration files for your environment.  Modifying these files to
+your liking takes time, so make sure that you back them somewhere.  If you're
+tech savvy, Git version control is perfect for saving your
+dots--quickly share and sync your configs across multiple devices.
+
+I hope you're ready to start managing and configuring your dots!  For some
+inspiration and more dotfile related information, check out my personal files on GitHub: https://github.com/vinnyA3/dotfiles
+
+
+## Resources
+
+* Get started with your own dotfiles: https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789
