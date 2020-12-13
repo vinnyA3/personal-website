@@ -1,6 +1,6 @@
 ---
 title: "Getting Started with Dotfiles"
-date: "2020-03-12"
+date: "2020-12-03"
 ---
 
 ## What Are Dotfiles? 

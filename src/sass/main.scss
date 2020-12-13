@@ -101,6 +101,7 @@ body::-webkit-scrollbar-thumb {
 body {
   margin: 0;
 	line-height: $baseline;
+  background-color: var(--bg-primary);
   color: $base-font-color;
 }
 

@@ -1,0 +1,29 @@
+@import '@sass/extends.scss';
+
+.main-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4em 0;
+  @extend %content-wrapper;
+
+  &__brand {
+    h3 {
+      margin: 0; // TODO: move to global
+    }
+  }
+
+  &__controls {
+    li {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__sub-nav {
+    flex: 1 0 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

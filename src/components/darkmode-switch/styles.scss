@@ -1,3 +1,9 @@
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .toggle {
   --dur: 0.3s;
   position: relative;
