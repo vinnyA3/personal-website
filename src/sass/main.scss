@@ -111,7 +111,8 @@ body.dark {
   --font-color-primary: #fff;
 }
 
-body > div {
+// account for gatsby wrapper
+body > div, #gatsby-focus-wrapper {
   height: 100%; 
   width: 100%; 
 }
