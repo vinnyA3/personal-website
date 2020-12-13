@@ -5,7 +5,7 @@ import './styles.scss';
 const DarkModeSwitch = (props) => {
   const { isDark, toggle } = useTheme()
   return (
-    <div style={props.style || {}}>
+    <div className='toggle-container' style={props.style || {}}>
       <input type="checkbox"
         className="toggle"
         checked={isDark}

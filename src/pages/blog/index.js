@@ -1,16 +1,29 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import SEO from "@components/seo"
-import ContentWrapper from "./layouts/content"
+import Layout from "@layouts/blog-post"
 
-const BlogIndex = props => {
-  const { data } = props
-  const firstPost = data.allMarkdownRemark.edges[0].node
-
+const BlogIndex = ({ data }) => {
   return (
     <React.Fragment>
       <SEO title="Blog" />
-      <ContentWrapper postData={firstPost} />
+      <Layout>
+        <section className="blog-content__hero">
+          <h1>Hi! Welcome to the Blog!</h1>
+        </section>
+
+        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+        {data.allMarkdownRemark.edges.map(({ node }) => (
+          <div key={node.id}>
+            <Link to={node.fields.slug}>
+              <h3>
+                {node.frontmatter.title} <span>— {node.frontmatter.date}</span>
+              </h3>
+              <p>{node.excerpt}</p>
+            </Link>
+          </div>
+        ))}
+      </Layout>
     </React.Fragment>
   )
 }
@@ -19,17 +32,20 @@ export default BlogIndex
 
 export const query = graphql`
   query {
-    allMarkdownRemark {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      totalCount
       edges {
         node {
+          id
           frontmatter {
             title
             date(formatString: "DD MMMM, YYYY")
           }
           tableOfContents(heading: "", maxDepth: 10, absolute: false)
+          fields {
+            slug
+          }
           excerpt
-          timeToRead
-          html
         }
       }
     }

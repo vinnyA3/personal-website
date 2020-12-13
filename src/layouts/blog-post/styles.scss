@@ -1,18 +1,7 @@
 @import '@sass/mixins.scss';
 
 $wrapper-padding: 1.2em 1.8em;
-$main-content-padding: 3.4em 6.8em;
-
-.content-wrapper {
-  width: 100%;
-  padding: 0 .8em;
-
-  @include break(lg) {
-    width: 1120px;
-    margin: 0 auto;
-    padding: 0;
-  }
-}
+$main-content-padding: 0 6.8em 3.4em 6.8em;
 
 .blog-layout {
   display: grid;
@@ -21,7 +10,9 @@ $main-content-padding: 3.4em 6.8em;
     "main main main"
     "footer footer footer";
 
-  grid-template-rows: minmax(12em, 1fr) auto minmax(4em, 1fr);
+  height: 100%;
+  width: 100%;
+  grid-template-rows: auto 1fr auto;
   grid-template-columns: 150px 1fr;
   background-color: var(--bg-primary);
   color: var(--font-color-primary);
@@ -42,10 +33,11 @@ $main-content-padding: 3.4em 6.8em;
   // border-top-color: #4a5568;
   background-color: #021832;
   color: #fff;
+  padding-bottom: 4em;
 
   &__top-bar {
     position: absolute;
-    height: 20%;
+    height: 16%;
     width: 100%;
     top: 0;
     left: 0;
@@ -93,6 +85,11 @@ $main-content-padding: 3.4em 6.8em;
     align-items: center;
     flex: 1 0 100%;
   }
+
+  &__nav li {
+    padding: 0;
+    margin: 0;
+  }
   
   &__nav li:not(:last-child) {
     margin-right: 1.4em;
@@ -101,7 +98,6 @@ $main-content-padding: 3.4em 6.8em;
 
 .blog-content {
   grid-area: main;
-  height: 100%;
   width: 100%;
   padding-bottom: 1.6em;
 
@@ -119,15 +115,17 @@ $main-content-padding: 3.4em 6.8em;
     flex-flow: row wrap;
     align-items: center;
     position: relative;
+    margin-bottom: 4.5em; 
     
     h1 {
       flex: 1;
       text-align: center;
+      margin: 0;
     }
   }
 
   &__main {
-    padding: .8em;
+    padding: 0 0.8em 0.8em 0.8em;
 
     ::-moz-selection {
       /* Code for Firefox */
@@ -153,7 +151,7 @@ $main-content-padding: 3.4em 6.8em;
     }
 
     @include break(sm) {
-      padding: 1.8em;
+      padding: 0 1.8em 1.8em 1.8em;
     }
 
     @include break(md) {
