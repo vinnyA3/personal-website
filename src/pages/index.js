@@ -33,8 +33,8 @@ const IndexPage = () => {
         </div>
         <h1 className="intro__profession">Software Engineer</h1>
         <h4 className="intro__blurb">
-          Currently writing code at Major League Soccer, occasionally
-          contributing to open-source and writing when I can.
+          Currently writing code at Equinox Media, and occasionally
+          contributing to open-source projects!
         </h4>
         <div className="u-flex-center">
           <Link to="/blog">
