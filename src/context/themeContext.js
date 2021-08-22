@@ -1,51 +1,52 @@
-import React, { useState, createContext, useEffect, useContext } from "react"
+import React, { useState, createContext, useEffect, useContext } from 'react';
 
 const defaultContextData = {
   isDark: false,
   toggle: () => {},
-}
+};
 
-const ThemeContext = createContext(defaultContextData)
-const useTheme = () => useContext(ThemeContext)
+const ThemeContext = createContext(defaultContextData);
+const useTheme = () => useContext(ThemeContext);
 
 const useEffectDarkMode = () => {
   const [themeState, setThemeState] = useState({
     isDark: false,
     hasThemeLoaded: false,
-  })
+  });
 
   useEffect(() => {
-    const isLocalStorageDark = localStorage.getItem("dark") === "true"
+    const isLocalStorageDark = localStorage.getItem('dark') === 'true';
 
     if (isLocalStorageDark) {
-      document.querySelector("body").classList.add("dark")
+      document.querySelector('body').classList.add('dark');
     }
 
     setThemeState({
       isDark: isLocalStorageDark,
       hasThemeLoaded: true,
-    })
-  }, [])
+    });
+  }, []);
 
-  return [themeState, setThemeState]
-}
+  return [themeState, setThemeState];
+};
 
 const ThemeProvider = ({ children }) => {
-  const [themeState, setThemeState] = useEffectDarkMode()
+  const [themeState, setThemeState] = useEffectDarkMode();
+  const bodyElement = document.querySelector('body');
 
   const toggle = () => {
-    const darkModeToggleState = !themeState.isDark
-    const bodyElement = document.querySelector("body")
+    const darkModeToggleState = !themeState.isDark;
 
-    localStorage.setItem("dark", JSON.stringify(darkModeToggleState))
+    localStorage.setItem('dark', JSON.stringify(darkModeToggleState));
+
     darkModeToggleState
-      ? bodyElement.classList.add("dark")
-      : bodyElement.classList.remove("dark")
-    setThemeState({ ...themeState, isDark: darkModeToggleState })
-  }
+      ? bodyElement.classList.add('dark')
+      : bodyElement.classList.remove('dark');
+    setThemeState({ ...themeState, isDark: darkModeToggleState });
+  };
 
   if (!themeState.hasThemeLoaded) {
-    return <div />
+    return <div />;
   }
 
   return (
@@ -57,7 +58,7 @@ const ThemeProvider = ({ children }) => {
     >
       {children}
     </ThemeContext.Provider>
-  )
-}
+  );
+};
 
-export { ThemeProvider, useTheme }
+export { ThemeProvider, useTheme };
