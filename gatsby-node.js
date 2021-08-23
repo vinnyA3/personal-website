@@ -1,28 +1,28 @@
 /**
  * See: https://www.gatsbyjs.com/docs/node-apis/
  */
-const fs = require("fs-extra")
-const path = require("path")
-const { createFilePath } = require("gatsby-source-filesystem")
+const fs = require('fs-extra');
+const path = require('path');
+const { createFilePath } = require('gatsby-source-filesystem');
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
-  if (node.internal.type === "MarkdownRemark") {
-    const { createNodeField } = actions
+  if (node.internal.type === 'MarkdownRemark') {
+    const { createNodeField } = actions;
     const slug = `/blog${createFilePath({
       node,
       getNode,
-      basePath: path.resolve(path.join(__dirname, "content")),
-    })}`
+      basePath: path.resolve(path.join(__dirname, 'content')),
+    })}`;
     createNodeField({
       node,
-      name: "slug",
+      name: 'slug',
       value: slug,
-    })
+    });
   }
-}
+};
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
   const result = await graphql(`
     query MyQuery {
       allMarkdownRemark {
@@ -35,26 +35,26 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `)
+  `);
 
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
       component: path.resolve(
-        path.join(__dirname, "src/templates/blog-post.js")
+        path.join(__dirname, 'src/templates/blog-post.tsx')
       ),
       context: {
         slug: node.fields.slug,
       },
-    })
-  })
-}
+    });
+  });
+};
 
 exports.onPostBuild = () => {
   // Handle CNAME configuration
-  console.log("Copying [CNAME] file to /public ...")
+  console.log('Copying [CNAME] file to /public ...');
   fs.copyFileSync(
-    path.join(__dirname, "CNAME"),
-    path.join(__dirname, "/public/CNAME")
-  )
-}
+    path.join(__dirname, 'CNAME'),
+    path.join(__dirname, '/public/CNAME')
+  );
+};
