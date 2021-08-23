@@ -1,31 +1,31 @@
-import React, { useEffect } from "react"
-import { graphql } from "gatsby"
-import SEO from "@components/seo"
-import Layout from "@layouts/blog-post"
-import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader"
+import React, { useEffect } from 'react';
+import { graphql } from 'gatsby';
+import SEO from '@components/seo';
+import Layout from '@layouts/blog-post';
+import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/highlight-code/dist/loader';
 
-deckDeckGoHighlightElement()
+deckDeckGoHighlightElement();
 
 export default function BlogPost({ data }) {
-  const post = data.markdownRemark
+  const post = data.markdownRemark;
 
   useEffect(() => {
-    const mediaString = "(max-width: 1290px)"
-    const mql = window.matchMedia(mediaString)
-    const tocEl = document.getElementById("toc")
+    const mediaString = '(max-width: 1290px)';
+    const mql = window.matchMedia(mediaString);
+    const tocEl = document.getElementById('toc');
 
     const handleChange = e => {
       if (e.matches) {
-        tocEl.style.display = "none"
+        tocEl.style.display = 'none';
       } else {
-        tocEl.style.display = "block"
+        tocEl.style.display = 'block';
       }
-    }
+    };
 
-    mql.addListener(handleChange)
+    mql.addListener(handleChange);
 
-    return () => mql.removeListener(handleChange)
-  }, [])
+    return () => mql.removeListener(handleChange);
+  }, []);
 
   return (
     <React.Fragment>
@@ -37,7 +37,7 @@ export default function BlogPost({ data }) {
         <div
           id="toc"
           className="blog-content__toc"
-          style={{ position: "fixed", left: "3em", top: "50%" }}
+          style={{ position: 'fixed', left: '3em', top: '50%' }}
           dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
         />
         <main
@@ -46,11 +46,11 @@ export default function BlogPost({ data }) {
         />
       </Layout>
     </React.Fragment>
-  )
+  );
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       fields {
         slug
@@ -62,4 +62,4 @@ export const query = graphql`
       tableOfContents
     }
   }
-`
+`;

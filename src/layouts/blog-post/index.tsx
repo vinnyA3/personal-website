@@ -1,16 +1,14 @@
-import React from "react"
-import { Link } from "gatsby"
-import MainNavigation from "@components/navigation"
-import VincentProfile from "@assets/images/vincent-profile.jpeg"
-import "./styles.scss"
+import React from 'react';
+import { Link } from 'gatsby';
+import MainNavigation from '@components/navigation';
+import VincentProfile from '@assets/images/vincent-profile.jpeg';
+import './styles.scss';
 
-const ContentWrapper = props => {
+const ContentWrapper = ({ children }) => {
   return (
     <div className="blog-layout">
       <MainNavigation styles={componentStyles.positioning} />
-      <div className='blog-content'>
-        {props.children}
-      </div>
+      <div className="blog-content">{children}</div>
 
       <footer className="blog-footer">
         <div className="blog-footer__top-bar" />
@@ -36,13 +34,13 @@ const ContentWrapper = props => {
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default ContentWrapper
+export default ContentWrapper;
 
 const componentStyles = {
   positioning: {
-    gridArea: 'nav'
-  } 
-}
+    gridArea: 'nav',
+  },
+};

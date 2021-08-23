@@ -1,5 +1,10 @@
 import React, { useState, createContext, useEffect, useContext } from 'react';
 
+interface Theme {
+  isDark: boolean;
+  hasThemeLoaded: boolean;
+}
+
 const defaultContextData = {
   isDark: false,
   toggle: () => {},
@@ -8,8 +13,8 @@ const defaultContextData = {
 const ThemeContext = createContext(defaultContextData);
 const useTheme = () => useContext(ThemeContext);
 
-const useEffectDarkMode = () => {
-  const [themeState, setThemeState] = useState({
+const useEffectDarkMode = (): [Theme, (arg: Theme) => void] => {
+  const [themeState, setThemeState] = useState<Theme>({
     isDark: false,
     hasThemeLoaded: false,
   });

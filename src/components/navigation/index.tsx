@@ -1,10 +1,12 @@
-import React from "react"
-import { Link } from "gatsby"
-import DarkModeSwitch from "@components/darkmode-switch"
-import "./styles.scss"
+import React from 'react';
+import { Properties as CSSProps } from 'csstype';
+import { Link } from 'gatsby';
+import DarkModeSwitch from '@components/darkmode-switch';
+import './styles.scss';
 
-const Navigation = props => {
-  const { title = "Vincent Aceto", styles = {} } = props
+const Navigation = (props: { title: string, styles: CSSProps }) => {
+  const { title = 'Vincent Aceto', styles = {} } = props;
+
   return (
     <nav className="main-navigation" style={{ ...styles }}>
       <div className="main-navigation__sub-nav">
@@ -21,7 +23,7 @@ const Navigation = props => {
         </ul>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;
