@@ -1,8 +1,11 @@
 import React, { useEffect } from "react"
 import { Link } from "gatsby"
+
 import SEO from "@components/seo"
 import DarkModeSwitch from "@components/darkmode-switch"
+
 import VincentProfile from "@assets/images/vincent-profile.jpeg"
+
 import "@sass/main.scss"
 import "./styles.scss"
 

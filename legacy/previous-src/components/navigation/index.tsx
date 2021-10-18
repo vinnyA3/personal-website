@@ -1,7 +1,9 @@
 import React from 'react';
 import { Properties as CSSProps } from 'csstype';
 import { Link } from 'gatsby';
+
 import DarkModeSwitch from '@components/darkmode-switch';
+
 import './styles.scss';
 
 const Navigation = (props: { title: string, styles: CSSProps }) => {
