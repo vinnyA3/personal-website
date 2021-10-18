@@ -1,6 +1,8 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+
 import SEO from "@components/seo"
+
 import Layout from "@layouts/blog-post"
 
 const BlogIndex = ({ data }) => {

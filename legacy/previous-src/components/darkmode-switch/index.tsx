@@ -1,6 +1,8 @@
 import React from 'react';
 import { Properties as CSSProps } from 'csstyle';
+
 import { useTheme } from '@contexts/themeContext';
+
 import './styles.scss';
 
 const DarkModeSwitch = (props: { style: CSSProps }): JSX.Element => {
