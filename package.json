@@ -1,7 +1,7 @@
 {
   "name": "vincent-aceto",
   "private": true,
-  "description": "A website/blog for me!",
+  "description": "My personal website/blog",
   "version": "0.1.0",
   "author": "Vincent Aceto <vincent.aceto@gmail.com>",
   "scripts": {
