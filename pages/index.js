@@ -17,11 +17,12 @@ export default function Home({ allPostsData }) {
 
       <section className={utilStyles.headingMd}>
         <p>
-          Hello, I'm <strong>Vin</strong>. I'm a Software Engineer.
+          Hello, I'm <strong>Vin</strong>. &nbsp;I am currently a Software Engineer at Equinox Media.
         </p>
         <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
+          ( This website was built following the{' '}
+          <a href="https://nextjs.org/learn">Next.js tutorial</a>.{' '}
+          &nbsp;Stay tuned for the new site, which is currently in the works 💪 )
         </p>
       </section>
 
