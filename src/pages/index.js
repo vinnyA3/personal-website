@@ -20,9 +20,8 @@ export default function Home({ allPostsData }) {
           Hello, I'm <strong>Vin</strong>. &nbsp;I am currently a Software Engineer at Equinox Media.
         </p>
         <p>
-          ( This website was built following the{' '}
-          <a href="https://nextjs.org/learn">Next.js tutorial</a>.{' '}
-          &nbsp;Stay tuned for the new site, which is currently in the works 💪 )
+          This site is currently under construction.{' '}
+          &nbsp;Stay tuned for the new design &amp; fresh content, which are both currently in the works 💪
         </p>
       </section>
 
