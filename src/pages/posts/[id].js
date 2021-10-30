@@ -2,10 +2,10 @@ import Head from 'next/head';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 
-import Layout from '@components/layout'
-import Date from '@components/date'
+import Layout from 'components/layout'
+import Date from 'components/date'
 
-import utilStyles from '@styles/utils.module.css'
+import utilStyles from 'styles/utils.module.css'
 
 import { getAllPostsIds, getPostData } from '../../../lib/posts'
 
