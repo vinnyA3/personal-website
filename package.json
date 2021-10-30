@@ -13,14 +13,13 @@
   "dependencies": {
     "date-fns": "^2.25.0",
     "gray-matter": "^4.0.3",
-    "next": "^11.0.0",
+    "next": "^12.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-markdown": "^7.0.1",
     "rehype-raw": "^6.1.0"
   },
   "devDependencies": {
-    "babel-plugin-module-resolver": "^4.1.0",
     "prettier": "2.1.2",
     "remark": "^13.0.0",
     "remark-html": "^13.0.2"
