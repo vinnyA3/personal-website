@@ -2,14 +2,19 @@ import Head from 'next/head';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 
-import { getAllPostsIds, getPostData } from 'lib/posts'
+import {
+  getAllPostsIds,
+  getPostData,
+  ParameterizedId,
+  PostData,
+} from 'lib/posts';
 
-import Layout from 'components/layout'
-import Date from 'components/date'
+import Layout from 'components/layout';
+import Date from 'components/date';
 
-import utilStyles from 'styles/utils.module.css'
+import utilStyles from 'styles/utils.module.css';
 
-export default function Post({ postData }) {
+export default function Post({ postData }: { postData: PostData }): JSX.Element {
   return (
     <Layout>
       <Head>
@@ -20,30 +25,29 @@ export default function Post({ postData }) {
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
-        <ReactMarkdown
-          children={postData.content}
-          rehypePlugins={[rehypeRaw]}
-        />
+        <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+          {postData.content}
+        </ReactMarkdown>
       </article>
     </Layout>
   )
 }
 
 export async function getStaticProps({ params }) {
-  const postData = await getPostData(params.id)
+  const postData: PostData = await getPostData(params.id)
 
   return {
     props: {
-      postData
+      postData,
     }
   }
 }
 
 export async function getStaticPaths() {
-  const paths = getAllPostsIds()
+  const paths: ParameterizedId[] = getAllPostsIds();
 
   return {
     paths,
-    fallback: false
+    fallback: false,
   }
 }

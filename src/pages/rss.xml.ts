@@ -4,13 +4,18 @@ import { getAllPostsIds, getPostData } from 'lib/posts';
 
 import utils from 'utils';
 
+interface PostsXMLAndData {
+  latestPostDate: string;  
+  postsXML: string;
+};
+
 const {
   rss: { markdownStringToHTML, normalizeIdsFromParams },
 } = utils;
 
 const POSTS_URL = 'https://www.vincentaceto.com/posts/';
 
-const generatePostsXMLAndMeta = async ids => {
+const generatePostsXMLAndMeta = async (ids: string[]): Promise<PostsXMLAndData> => {
   let latestPostDate = '';
   let postsXML = '';
 
@@ -42,7 +47,7 @@ const generatePostsXMLAndMeta = async ids => {
   };
 };
 
-const getComposedXML = postsXMLAndMeta => {
+const getComposedXML = (postsXMLAndMeta: PostsXMLAndData): string => {
   const { postsXML, latestPostDate } = postsXMLAndMeta;
   const latestPostDateRFC = formatRFC(Date.parse(latestPostDate));
 

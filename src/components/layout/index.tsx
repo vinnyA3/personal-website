@@ -12,7 +12,13 @@ import styles from './layout.module.css';
 const name = 'Vincent Aceto';
 export const siteTitle = `${name}`;
 
-export default function Layout({ children, home }) {
+export default function Layout({
+  children,
+  home = false,
+}: {
+  children: JSX.Element[];
+  home?: boolean;
+}): JSX.Element {
   return (
     <div className={styles.container}>
       <Head>
@@ -44,7 +50,9 @@ export default function Layout({ children, home }) {
             />
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
             <div className={styles.socialLinksContainer}>
-              <a href="/rss.xml">
+              {
+                // eslint-disable-next-line
+              }<a href="/rss.xml">
                 <FontAwesomeIcon icon={faRss} />
               </a>
               <a href="https://www.linkedin.com/in/vinaceto">
