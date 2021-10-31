@@ -1,13 +1,16 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
+import { faRss } from '@fortawesome/free-solid-svg-icons';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import utilStyles from 'styles/utils.module.css'
+import utilStyles from 'styles/utils.module.css';
 
-import styles from './layout.module.css'
+import styles from './layout.module.css';
 
-const name = 'Vincent Aceto'
-export const siteTitle = `${name}` 
+const name = 'Vincent Aceto';
+export const siteTitle = `${name}`;
 
 export default function Layout({ children, home }) {
   return (
@@ -40,6 +43,17 @@ export default function Layout({ children, home }) {
               alt={name}
             />
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <div className={styles.socialLinksContainer}>
+              <a href="/rss.xml">
+                <FontAwesomeIcon icon={faRss} />
+              </a>
+              <a href="https://www.linkedin.com/in/vinaceto">
+                <FontAwesomeIcon icon={faLinkedin} />
+              </a>
+              <a href="https://www.github.com/vinnyA3">
+                <FontAwesomeIcon icon={faGithub} />
+              </a>
+            </div>
           </>
         ) : (
           <>
@@ -72,5 +86,5 @@ export default function Layout({ children, home }) {
         </div>
       )}
     </div>
-  )
+  );
 }

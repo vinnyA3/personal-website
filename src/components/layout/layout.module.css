@@ -8,8 +8,38 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2.833rem;
 }
 
 .backToHome {
   margin: 3rem 0 0;
+}
+
+.socialLinksContainer {
+  display: inline-flex;
+  width: 60%;
+  justify-content: space-between;
+}
+
+.socialLinksContainer a:not(:last-child) {
+  margin-right: 2.633rem;
+}
+
+.socialLinksContainer a {
+  font-size: 1.8rem;
+}
+
+/* TODO: after incorporating SASS, move to mixin & standardize viewports sizes */
+@media screen and (min-width: 420px) {
+  .socialLinksContainer {
+    width: unset;
+  }
+
+  .socialLinksContainer a:not(:last-child) {
+    margin-right: 1.333rem;
+  }
+
+  .socialLinksContainer a {
+    font-size: 1rem;
+  }
 }
