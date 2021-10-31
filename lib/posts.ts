@@ -2,12 +2,29 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
+type paramsKey = 'params';
+
+interface DerivedMatterMeta {
+  title: string;
+  date: string;
+}
+
+type MetaId = {
+  id: string;
+};
+
+export type ParameterizedId = {
+  [k in paramsKey]: MetaId;
+};
+
+export type PostData = MetaId & DerivedMatterMeta & { content?: string };
+
 const postsDirectory = path.join(process.cwd(), 'posts');
 
-export function getSortedPostsData() {
+export function getSortedPostsData(): PostData[] {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
+  const allPostsData = fileNames.map(fileName => {
     // Remove ".md" from file name to get id
     const id = fileName.replace(/\.md$/, '');
 
@@ -21,9 +38,10 @@ export function getSortedPostsData() {
     // Combine the data with the id
     return {
       id,
-      ...matterResult.data,
+      ...(matterResult.data as DerivedMatterMeta),
     };
   });
+
   // Sort posts by date
   return allPostsData.sort(({ date: a }, { date: b }) => {
     if (a < b) {
@@ -36,18 +54,17 @@ export function getSortedPostsData() {
   });
 }
 
-export function getAllPostsIds() {
+export function getAllPostsIds(): ParameterizedId[] | [] {
   const fileNames = fs.readdirSync(postsDirectory);
-  return fileNames.map((fileName) => {
-    return {
-      params: {
-        id: fileName.replace(/\.md$/, ''),
-      },
-    };
-  });
+
+  return fileNames.map(fileName => ({
+    params: {
+      id: fileName.replace(/\.md$/, ''),
+    },
+  }));
 }
 
-export async function getPostData(id) {
+export async function getPostData(id: string): Promise<PostData> {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
@@ -57,7 +74,7 @@ export async function getPostData(id) {
   // Combine the data with the id
   return {
     id,
-    content: matterResult.content, // content is stringified markdown (to be parsed downstream)
-    ...matterResult.data,
+    content: matterResult.content,
+    ...(matterResult.data as DerivedMatterMeta),
   };
 }
