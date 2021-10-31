@@ -1,5 +1,18 @@
-const nextConfig = {
-  swcMinify: true,
-};
+const headers = async () => {
+  return [
+    {
+      source: '/rss.xml',
+      headers: [
+        {
+          key: 'Content-Type',
+          value: 'text/xml',
+        }
+      ]
+    }
+  ];
+}
 
-module.exports = nextConfig;
+module.exports = {
+  swcMinify: true,
+  headers,
+};
