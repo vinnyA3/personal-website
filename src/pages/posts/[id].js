@@ -2,12 +2,12 @@ import Head from 'next/head';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 
+import { getAllPostsIds, getPostData } from 'lib/posts'
+
 import Layout from 'components/layout'
 import Date from 'components/date'
 
 import utilStyles from 'styles/utils.module.css'
-
-import { getAllPostsIds, getPostData } from '../../../lib/posts'
 
 export default function Post({ postData }) {
   return (

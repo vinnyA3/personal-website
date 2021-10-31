@@ -1,8 +1,8 @@
 import formatRFC from 'date-fns/formatRFC7231';
 
-import utils from 'utils';
+import { getAllPostsIds, getPostData } from 'lib/posts';
 
-import { getAllPostsIds, getPostData } from '../../lib/posts';
+import utils from 'utils';
 
 const {
   rss: { markdownStringToHTML, normalizeIdsFromParams },
