@@ -50,6 +50,7 @@ export default function Layout({
             />
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
             <div className={styles.socialLinksContainer}>
+              { /* TODO: see if we use Next's Link component here .. and, if not, how come. */ } 
               {
                 // eslint-disable-next-line
               }<a href="/rss.xml">
