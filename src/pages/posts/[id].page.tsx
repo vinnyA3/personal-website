@@ -15,6 +15,7 @@ import Date from 'components/date';
 import utilStyles from 'styles/utils.module.css';
 
 import MDXComponents from './mdx-components';
+import styles from './posts-layout.module.css';
 
 export default function Post({
   postMeta,
@@ -25,11 +26,13 @@ export default function Post({
       <Head>
         <title>{postMeta.title}</title>
       </Head>
-      <article>
+      <section>
         <h1 className={utilStyles.headingXl}>{postMeta.title}</h1>
         <div className={utilStyles.lightText}>
           <Date dateString={postMeta.date} />
         </div>
+      </section>
+      <article className={styles.contentWrapper}>
         <MDXRemote {...mdxSource} components={MDXComponents} />
       </article>
     </Layout>
