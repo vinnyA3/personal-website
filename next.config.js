@@ -1,7 +1,7 @@
 const headers = async () => {
   return [
     {
-      source: '/rss.xml',
+      source: '/rss',
       headers: [
         {
           key: 'Content-Type',
@@ -15,4 +15,5 @@ const headers = async () => {
 module.exports = {
   swcMinify: true,
   headers,
+  pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
 };

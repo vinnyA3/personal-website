@@ -53,7 +53,7 @@ export default function Layout({
               { /* TODO: see if we use Next's Link component here .. and, if not, how come. */ } 
               {
                 // eslint-disable-next-line
-              }<a href="/rss.xml">
+              }<a href="/rss">
                 <FontAwesomeIcon icon={faRss} />
               </a>
               <a href="https://www.linkedin.com/in/vinaceto">
