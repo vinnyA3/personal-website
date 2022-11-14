@@ -1,0 +1,34 @@
+---
+import Card from '@components/Card.astro';
+
+import BaseLayout from './base.astro';
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title}>
+  <nav class="nav-container">
+    <Card body="🏡 There\'s no place like home" href="/" />
+  </nav>
+
+  <main class="content-container">
+    <h1>{frontmatter.title}</h1>
+    <p>{frontmatter.pubDate.slice(0, 10)}</p>
+    <p><em>{frontmatter.description}</em></p>
+    <p>Written by: {frontmatter.author}</p>
+    <slot />
+  </main>
+</BaseLayout>
+
+<style>
+  .content-container {
+    max-width: 36rem;
+    padding: 0 1rem;
+    margin: 2rem auto 6rem;
+  }
+
+  .nav-container {
+    display: inline-block;
+    padding: 0.69em;
+  }
+</style>

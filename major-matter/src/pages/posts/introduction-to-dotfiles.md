@@ -1,9 +1,12 @@
 ---
-title: "Getting Started with Dotfiles"
-date: "2020-12-03"
+layout: ../../layouts/posts.astro
+title: Getting Started with Dotfiles
+pubDate: 2020-12-03
+description: "First Post! Get started with Dotfiles - a Humble Introduction"
+author: "Vin Aceto"
 ---
 
-## What Are Dotfiles? 
+## What Are Dotfiles?
 
 Dotfiles are configuration files that are used to customize and personalize your system. For all you history buffs, the dotfiles name comes from the UNIX convention of prefixing config files with a dot.  You can checkout some of the dotfiles by opening up terminal, navigate to your home directory, and listing all contents:
 

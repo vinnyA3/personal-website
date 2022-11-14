@@ -1,6 +1,9 @@
 ---
+layout: ../../layouts/posts.astro
 title: "A Hacktoberfest Composition: Redis and Docker"
-date: "2021-10-31"
+pubDate: 2021-10-31
+description: "A guest post that I got to write for Redis!"
+author: "Vin Aceto"
 ---
 
 > The following is a guest post that I got to write for Redis!  You can check
@@ -70,8 +73,6 @@ First, let's start with the Docker Compose `YAML` file:
 <img
   src="/images/screenshot-1.png"
   alt="original repository docker compose file"
-  height={650}
-  width={1200}
 />
 
 As you can see, we have some Redis provisioning steps.  We assign a name to the
@@ -88,8 +89,6 @@ create a Dockerfile, which will assemble the application image for us:
 <img
   src="/images/screenshot-2.png"
   alt="working Dockerfile"
-  height={650}
-  width={1200}
 />
 
 
@@ -109,8 +108,6 @@ Let's build the image:
 <img
   src="/images/screenshot-3.png"
   alt="docker build output"
-  height={291}
-  width={525}
 />
 
 
@@ -118,8 +115,6 @@ Get our newly created image's hash identifier by listing our local images:
 <img
   src="/images/screenshot-4.png"
   alt="docker images list output"
-  height={73}
-  width={691}
 />
 
 
@@ -128,8 +123,6 @@ on our machine to the exposed port defined in the Dockerfile:
 <img
   src="/images/screenshot-5.png"
   alt="docker run output"
-  height={482}
-  width={1432}
 />
 
 
@@ -139,8 +132,6 @@ application:
 <img
   src="/images/screenshot-6.png"
   alt="successful curl html output text"
-  height={650}
-  width={1200}
 />
 
 
@@ -148,8 +139,6 @@ With the Flask application Docker-fiedTM, let's compose it with Redis!
 <img
   src="/images/screenshot-7.png"
   alt="full working docker compose file"
-  height={447}
-  width={535}
 />
 
 
@@ -168,8 +157,6 @@ up`:
 <img
   src="/images/screenshot-8.png"
   alt="docker compose up build output"
-  height={464}
-  width={1060}
 />
 
 
@@ -178,8 +165,6 @@ application in action:
 <img
   src="/images/screenshot-9.png"
   alt="geosearch application running in browser"
-  height={996}
-  width={2826}
 />
 
 
@@ -204,8 +189,6 @@ host in the Dockerfile's `CMD` command:
 <img
   src="/images/screenshot-10.png"
   alt="Dockerfile with flask cmd and host ip solution"
-  height={316}
-  width={886}
 />
 
 
