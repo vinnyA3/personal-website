@@ -7,28 +7,18 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout title={frontmatter.title}>
-  <nav class="nav-container">
+  <nav class="inline-flex p-2.5">
     <Card body="🏡 There\'s no place like home" href="/" />
   </nav>
 
-  <main class="content-container">
-    <h1>{frontmatter.title}</h1>
-    <p>{frontmatter.pubDate.slice(0, 10)}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <p>Written by: {frontmatter.author}</p>
+  <main class="max-w-xl mt-8 mr-auto ml-auto mb-12">
+    <section class="p-8 mb-8 border-2 border-stone-400 rounded-md">
+      <h1>{frontmatter.title}</h1>
+      <p>{frontmatter.pubDate.slice(0, 10)}</p>
+      <p><em>{frontmatter.description}</em></p>
+      <p>Written by: {frontmatter.author}</p>
+    </section>
+
     <slot />
   </main>
 </BaseLayout>
-
-<style>
-  .content-container {
-    max-width: 36rem;
-    padding: 0 1rem;
-    margin: 2rem auto 6rem;
-  }
-
-  .nav-container {
-    display: inline-block;
-    padding: 0.69em;
-  }
-</style>
